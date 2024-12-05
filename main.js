@@ -1,6 +1,5 @@
 let acceso = prompt("Desea realizar una operación de COMPRA/VENTA de divisas extranjeras con pesos Argentinos? SI/NO")
 let ingreso = "si"
-let egreso = "no"
 
 while (acceso == ingreso) {
      
@@ -10,46 +9,49 @@ while (acceso == ingreso) {
 
         let menu2 = prompt("Por favor seleccione un número para indicar con que divisa desea operar: \n" + "1.- Dolares \n" + "2.- Euros \n" + "3.- Reales \n" + "4.- Pesos Chilenos \n" + "5.- Pesos Uruguayos \n")
         
-        do {
-            const cotizaciones = {
-                1: { nombre: "dolares", cotizacion: 1080 },
-                2: { nombre: "euros", cotizacion: 1029 },
-                3: { nombre: "reales", cotizacion: 170 },
-                4: { nombre: "pesos Chilenos", cotizacion: 100 },
-                5: { nombre: "pesos Uruguayos", cotizacion: 23 },
-              }
-
-              switch(menu2){
-                case 1:
-                    alert(`Usted selecciono operar con ${dolares}`)               
-                case 2:
-                    alert(`Usted selecciono operar con ${euros}`)
-                case 3:
-                    alert(`Usted selecciono operar con ${reales}`)
-                case 4:
-                    alert(`Usted selecciono operar con ${pesosChi}`)
-                case 5:
-                    alert(`Usted selecciono operar con ${pesosUru}`)
-                default:
-                    break           
-                }
-
-                let cantidad = parseFloat(prompt("Indique la cantidad que desea " + opcion + ": "))
-
-                function calculadora(monto, cotizacion, moneda){
-                    alert (articulo + opcion + ` ${cantidad} ` + moneda +  mensaje + monto*cotizacion + " pesos Argentinos")
-                } 
-
-                let divisaSeleccionada = cotizaciones[menu2];
-
-                if (divisaSeleccionada) { 
-                    calculadora(cantidad, divisaSeleccionada.cotizacion, divisaSeleccionada.nombre);
-                }else{
-                    alert("Vuelva a ingresar una opción válida");
-                }
-
-        }while(menu2 = 0 || menu2 > 5)
-
+        if (menu2 == 1 || menu2 == 2 || menu2 == 3 || menu2 == 4 || menu2 == 5){
+            do {
+                const cotizaciones = {
+                    1: { nombre: "dolares", cotizacion: 1080 },
+                    2: { nombre: "euros", cotizacion: 1029 },
+                    3: { nombre: "reales", cotizacion: 170 },
+                    4: { nombre: "pesos Chilenos", cotizacion: 100 },
+                    5: { nombre: "pesos Uruguayos", cotizacion: 23 },
+                  }
+    
+                  switch(menu2){
+                    case 1:
+                        alert(`Usted selecciono operar con ${dolares}`)               
+                    case 2:
+                        alert(`Usted selecciono operar con ${euros}`)
+                    case 3:
+                        alert(`Usted selecciono operar con ${reales}`)
+                    case 4:
+                        alert(`Usted selecciono operar con ${pesosChi}`)
+                    case 5:
+                        alert(`Usted selecciono operar con ${pesosUru}`)
+                    default:
+                        break           
+                    }
+    
+                    let cantidad = parseFloat(prompt("Indique la cantidad que desea " + opcion + ": "))
+    
+                    function calculadora(monto, cotizacion, moneda){
+                        alert (articulo + opcion + ` ${cantidad} ` + moneda +  mensaje + " " + monto*cotizacion + " pesos Argentinos")
+                    } 
+    
+                    let divisaSeleccionada = cotizaciones[menu2];
+    
+                    if (divisaSeleccionada) { 
+                        calculadora(cantidad, divisaSeleccionada.cotizacion, divisaSeleccionada.nombre);
+                    }else{
+                        alert("Vuelva a ingresar una opción válida");
+                    }
+    
+            }while(menu2 = 0 || menu2 > 5)
+        }else 
+            alert("Opción no válida")
+    
     }
 
     if (menu1 == 1){
