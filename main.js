@@ -1,7 +1,9 @@
 let acceso = prompt("Desea realizar una operación de COMPRA/VENTA de divisas extranjeras con pesos Argentinos? SI/NO")
-let ingreso = "si"
+let ingreso = ["si", "no"]
+let otraOpcion = ingreso.push("Programa iniciando", "Programa finalizado")
+alert(ingreso[2])
 
-while (acceso == ingreso) {
+while (acceso == ingreso[0]) {
      
     let menu1 = prompt("Por favor seleccione un número: \n" + "1.- Comprar divisas \n" + "2.- Vender divisas \n" + "3.- Salir del menu")  
     
@@ -18,18 +20,19 @@ while (acceso == ingreso) {
                     4: { nombre: "pesos Chilenos", cotizacion: 100 },
                     5: { nombre: "pesos Uruguayos", cotizacion: 23 },
                   }
+
     
                   switch(menu2){
                     case 1:
-                        alert(`Usted selecciono operar con ${dolares}`)               
+                        alert(`Usted selecciono operar con ${cotizaciones.nombre}`)               
                     case 2:
-                        alert(`Usted selecciono operar con ${euros}`)
+                        alert(`Usted selecciono operar con ${cotizaciones.nombre}`)
                     case 3:
-                        alert(`Usted selecciono operar con ${reales}`)
+                        alert(`Usted selecciono operar con ${cotizaciones.nombre}`)
                     case 4:
-                        alert(`Usted selecciono operar con ${pesosChi}`)
+                        alert(`Usted selecciono operar con ${cotizaciones.nombre}`)
                     case 5:
-                        alert(`Usted selecciono operar con ${pesosUru}`)
+                        alert(`Usted selecciono operar con ${cotizaciones.nombre}`)
                     default:
                         break           
                     }
@@ -70,4 +73,4 @@ while (acceso == ingreso) {
             break    
         }    
     }
-    alert("Programa finalizado")
+    alert(ingreso[3])
