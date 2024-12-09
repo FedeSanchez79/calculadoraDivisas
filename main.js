@@ -1,7 +1,7 @@
 let acceso = prompt("Desea realizar una operación de COMPRA/VENTA de divisas extranjeras con pesos Argentinos? SI/NO")
 let ingreso = ["si", "no"]
-let otraOpcion = ingreso.push("Programa iniciando", "Programa finalizado")
-alert(ingreso[2])
+let otraOpcion = ingreso.push("Bienvenido a la Calculadora de Divisas", "Gracias por utilizar nuestros servicios", "Programa finalizado")
+
 
 while (acceso == ingreso[0]) {
      
@@ -69,8 +69,8 @@ while (acceso == ingreso[0]) {
             menuDivisas("Al ", "vender", " usted recibirá:")
 
     }else {
-            alert("Gracias por utilizar nuestros servicios")  
+            alert(ingreso[3])  
             break    
         }    
     }
-    alert(ingreso[3])
+    alert(ingreso[4])
