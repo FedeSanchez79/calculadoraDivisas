@@ -1,60 +1,74 @@
 let acceso = prompt("Desea realizar una operación de COMPRA/VENTA de divisas extranjeras con pesos Argentinos? SI/NO")
-let ingreso = ["si", "no"]
-let otraOpcion = ingreso.push("Bienvenido a la Calculadora de Divisas", "Gracias por utilizar nuestros servicios", "Programa finalizado")
+const ingresos = ["si", "no"]
 
-
-while (acceso == ingreso[0]) {
+while (acceso == ingresos[0]) {
      
-    let menu1 = prompt("Por favor seleccione un número: \n" + "1.- Comprar divisas \n" + "2.- Vender divisas \n" + "3.- Salir del menu")  
+    let menu1 = parseInt(prompt("Por favor seleccione un número: \n" + "1.- Comprar divisas \n" + "2.- Vender divisas \n" + "3.- Salir del menu"))
     
     function menuDivisas(articulo, opcion, mensaje){
 
-        let menu2 = prompt("Por favor seleccione un número para indicar con que divisa desea operar: \n" + "1.- Dolares \n" + "2.- Euros \n" + "3.- Reales \n" + "4.- Pesos Chilenos \n" + "5.- Pesos Uruguayos \n")
+        let menu2 = parseInt(prompt("Por favor seleccione un número para indicar con que divisa desea operar: \n" + "1.- Dolares \n" + "2.- Euros \n" + "3.- Reales \n" + "4.- Pesos Chilenos \n" + "5.- Pesos Uruguayos"))
         
-        if (menu2 == 1 || menu2 == 2 || menu2 == 3 || menu2 == 4 || menu2 == 5){
+        if (menu2 >= 1 && menu2 <= 5){
             do {
-                const cotizaciones = {
-                    1: { nombre: "dolares", cotizacion: 1080 },
-                    2: { nombre: "euros", cotizacion: 1029 },
-                    3: { nombre: "reales", cotizacion: 170 },
-                    4: { nombre: "pesos Chilenos", cotizacion: 100 },
-                    5: { nombre: "pesos Uruguayos", cotizacion: 23 },
-                  }
 
+                const nombreDivisas = ["dolares", "euros", "reales", "pesos chilenos", "pesos uruguayos"]
     
                   switch(menu2){
                     case 1:
-                        alert(`Usted selecciono operar con ${cotizaciones.nombre}`)               
+                        alert(`Usted seleccionó operar con ` + nombreDivisas[0]) 
+                        break            
                     case 2:
-                        alert(`Usted selecciono operar con ${cotizaciones.nombre}`)
+                        alert(`Usted seleccionó operar con ` + nombreDivisas[1])
+                        break
                     case 3:
-                        alert(`Usted selecciono operar con ${cotizaciones.nombre}`)
+                        alert(`Usted seleccionó operar con ` + nombreDivisas[2])
+                        break
                     case 4:
-                        alert(`Usted selecciono operar con ${cotizaciones.nombre}`)
+                        alert(`Usted seleccionó operar con ` + nombreDivisas[3])
+                        break
                     case 5:
-                        alert(`Usted selecciono operar con ${cotizaciones.nombre}`)
+                        alert(`Usted seleccionó operar con ` + nombreDivisas[4])
+                        break
                     default:
-                        break           
+                        alert("Opción inválida")
+                        return          
                     }
     
                     let cantidad = parseFloat(prompt("Indique la cantidad que desea " + opcion + ": "))
-    
                     function calculadora(monto, cotizacion, moneda){
                         alert (articulo + opcion + ` ${cantidad} ` + moneda +  mensaje + " " + monto*cotizacion + " pesos Argentinos")
                     } 
+
+                    switch(menu2){
+                        case 1:
+                            let cotizacionDolar = 1100 
+                            calculadora(cantidad, cotizacionDolar, nombreDivisas[0]) 
+                            break            
+                        case 2:
+                            let cotizacionEuro = 1030
+                            calculadora(cantidad, cotizacionEuro, nombreDivisas[1]) 
+                            break
+                        case 3:
+                            let cotizacionReal = 171
+                            calculadora(cantidad, cotizacionReal, nombreDivisas[2]) 
+                            break
+                        case 4:
+                            let cotizacionPesoChi = 101
+                            calculadora(cantidad, cotizacionPesoChi, nombreDivisas[3]) 
+                            break
+                        case 5:
+                            let cotizacionPesoUru = 24
+                            calculadora(cantidad, cotizacionPesoUru, nombreDivisas[4]) 
+                            break
+                        default:
+                            break           
+                        }
     
-                    let divisaSeleccionada = cotizaciones[menu2];
-    
-                    if (divisaSeleccionada) { 
-                        calculadora(cantidad, divisaSeleccionada.cotizacion, divisaSeleccionada.nombre);
-                    }else{
-                        alert("Vuelva a ingresar una opción válida");
-                    }
-    
-            }while(menu2 = 0 || menu2 > 5)
+            }while(menu2 == 0 || menu2 > 5)
         }else 
-            alert("Opción no válida")
-    
+            alert("Opción no válida")  
+            return  
     }
 
     if (menu1 == 1){
@@ -68,9 +82,18 @@ while (acceso == ingreso[0]) {
         
             menuDivisas("Al ", "vender", " usted recibirá:")
 
-    }else {
-            alert(ingreso[3])  
+            let transferencia = prompt("Desea transferir el monto a un banco? SI/NO")
+
+            if (transferencia == ingresos[0]){
+               let banco = parseInt(prompt("Por favor seleccione un número para indicar con que Banco desea operar: \n" + "1.- Banco de la Nación Argentina \n" + "2.- Banco de la Provincia de Buenos Aires \n" + "3.- Banco de la Ciudad de Buenos Aires \n" + "4.- Banco Galicia \n" + "5.- Banco BBVA \n" + "6.- Banco Hipotecario \n" + "7.- Banco del Chubut \n" + "8.- Banco Columbia \n" + "9.- Banco Entre Rios \n" + "10.- Banco Comafi \n" + "11.- ICBC Argentina \n" + "12.- Banco Macro \n" + "13.- Nuevo Banco Santa Fe \n" + "14.- Banco Patagonia \n" + "15.- Banco Santiago del Estero \n" + "16.- Banco Superville \n"))
+                
+            }
+
+
+    }else {  
             break    
         }    
     }
-    alert(ingreso[4])
+    alert("Gracias por utilizar nuestros servicios")
+    let otraOpcion = ingresos.push("programa finalizado")
+    alert(ingresos[2])
