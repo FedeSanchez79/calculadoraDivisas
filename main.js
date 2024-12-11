@@ -1,27 +1,30 @@
-let acceso = prompt("$MART CLICK: \n" + "Desea realizar una operación de COMPRA/VENTA de divisas extranjeras con pesos Argentinos? SI/NO")
-
-if(acceso !== "no" && acceso !== "si"){
-    alert("Por favor ingrese SI o NO")
-}
+// CALCULADORA DE DIVISAS Y CODIGOS DE TRANSFERENCIA BANCARIOS
 
 const ingresos = ["si", "no"]
 
+let acceso = prompt("$MART CLICK: \n" + "Desea realizar una operación de COMPRA/VENTA de divisas extranjeras con pesos Argentinos? SI/NO")
+
+if(acceso !== ingresos[0] && acceso !== ingresos[1]){
+    alert("Opción no válida")
+}
+
 while (acceso == ingresos[0]) {
      
-    let menu1 = parseInt(prompt("MENU PRINCIPAL: \n" + "Por favor seleccione un número: \n" + "1.- Comprar divisas \n" + "2.- Vender divisas \n" + "3.- Salir del menu"))
+    let menuPrincipal = parseInt(prompt("MENU PRINCIPAL: \n" + "Por favor seleccione un número: \n" + "1.- Comprar divisas \n" + "2.- Vender divisas \n" + "3.- Salir del menu"))
     
     function menuDivisas(articulo, opcion, mensaje){
 
-        let menu2 = parseInt(prompt("MENU DIVISAS: \n" + "Por favor seleccione un número para indicar con que divisa desea operar: \n" + "1.- Dolares \n" + "2.- Euros \n" + "3.- Reales \n" + "4.- Pesos Chilenos \n" + "5.- Pesos Uruguayos"))
+        let menuMoneda = parseInt(prompt("MENU DIVISAS: \n" + "Por favor seleccione un número para indicar con que divisa desea operar: \n" + "1.- Dolares \n" + "2.- Euros \n" + "3.- Reales \n" + "4.- Pesos Chilenos \n" + "5.- Pesos Uruguayos"))
         
-        if (menu2 >= 1 && menu2 <= 5){
+        if (menuMoneda >= 1 && menuMoneda <= 5){
+
             do {
 
                 const nombreDivisas = ["dolares", "euros", "reales", "pesos chilenos", "pesos uruguayos"]
 
                 //MUCHOS CASE, VER SI CON OBJETO SE PUEDE REDUCIR
 
-                switch(menu2){
+                switch(menuMoneda){
                     case 1:
                         alert(`Usted seleccionó operar con ` + nombreDivisas[0]) 
                         break            
@@ -38,11 +41,16 @@ while (acceso == ingresos[0]) {
                         alert(`Usted seleccionó operar con ` + nombreDivisas[4])
                         break
                     default:
-                        alert("Opción no válida")
-                        return          
+                        alert("Opción no válida, regresando al Menú Principal")
+                        break         
                     }
     
                 let cantidad = parseFloat(prompt("Indique la cantidad que desea " + opcion + ": "))
+
+                if(isNaN(cantidad)){
+                    alert("Opción no válida, seleccione NO en el siguiente menú")
+                    break
+                }
 
                 function calculadoraDivisas(monto, cotizacion, moneda){
                     alert (articulo + opcion + ` ${cantidad} ` + moneda +  mensaje + " " + monto*cotizacion + " pesos Argentinos")
@@ -52,7 +60,7 @@ while (acceso == ingresos[0]) {
 
                 //MUCHOS CASE, VER SI CON OBJETO SE PUEDE REDUCIR
 
-                switch(menu2){
+                switch(menuMoneda){
                     case 1:
                         calculadoraDivisas(cantidad, cotizacion[0], nombreDivisas[0]) 
                         break            
@@ -67,16 +75,15 @@ while (acceso == ingresos[0]) {
                         break
                     case 5:
                         calculadoraDivisas(cantidad, cotizacion[4], nombreDivisas[4]) 
-                        break
-                    default:
-                        alert("Opción no válida")
-                        return            
+                        break           
                     }
     
-            }while(menu2 == 0 && menu2 > 5)
+            }while(menuMoneda == 0 && menuMoneda > 5)
 
-        }else if(menu2 !== isNaN || menu2 == 0 || menu2 > 5)
-            alert("Opción no válida")   
+        }else if(isNaN(menuMoneda) || menuMoneda == 0 || menuMoneda > 5){
+            alert("Opción no válida, por favor seleccione NO en el próximo menú")
+            return
+        }   
     }
 
     function bancos(){
@@ -99,77 +106,77 @@ while (acceso == ingresos[0]) {
 
                 //MUCHOS CASE, VER SI CON OBJETO SE PUEDE REDUCIR
 
-                switch(banco){
-                    case 1:
-                        codigoBanco(bancos[0], codigoBancos[0])
-                        break
-                    case 2:
-                        codigoBanco(bancos[1], codigoBancos[1])
-                        break
-                    case 3:
-                        codigoBanco(bancos[2], codigoBancos[2])
-                        break
-                    case 4:
-                        codigoBanco(bancos[3], codigoBancos[3])
-                        break
-                    case 5:
-                        codigoBanco(bancos[4], codigoBancos[4])
-                        break
-                    case 6:
-                        codigoBanco(bancos[5], codigoBancos[5])
-                        break
-                    case 7:
-                        codigoBanco(bancos[6], codigoBancos[6])
-                        break
-                    case 8:
-                        codigoBanco(bancos[7], codigoBancos[7])
-                        break
-                    case 9:
-                        codigoBanco(bancos[8], codigoBancos[8])
-                        break
-                    case 10:
-                        codigoBanco(bancos[9], codigoBancos[9])
-                        break
-                    case 11:
-                        codigoBanco(bancos[10], codigoBancos[10])
-                        break
-                    case 12:
-                        codigoBanco(bancos[11], codigoBancos[11])
-                        break
-                    case 13:
-                        codigoBanco(bancos[12], codigoBancos[12])
-                        break
-                    case 14:
-                        codigoBanco(bancos[13], codigoBancos[13])
-                        break
-                    case 15:
-                        codigoBanco(bancos[14], codigoBancos[14])
-                        break
-                    case 16:
-                        codigoBanco(bancos[15], codigoBancos[15])
-                        break
-                    default:
-                        alert ("Opción no válida")
-                        break
-                }
+                    switch(banco){
+                        case 1:
+                            codigoBanco(bancos[0], codigoBancos[0])
+                            break
+                        case 2:
+                            codigoBanco(bancos[1], codigoBancos[1])
+                            break
+                        case 3:
+                            codigoBanco(bancos[2], codigoBancos[2])
+                            break
+                        case 4:
+                            codigoBanco(bancos[3], codigoBancos[3])
+                            break
+                        case 5:
+                            codigoBanco(bancos[4], codigoBancos[4])
+                            break
+                        case 6:
+                            codigoBanco(bancos[5], codigoBancos[5])
+                            break
+                        case 7:
+                            codigoBanco(bancos[6], codigoBancos[6])
+                            break
+                        case 8:
+                            codigoBanco(bancos[7], codigoBancos[7])
+                            break
+                        case 9:
+                            codigoBanco(bancos[8], codigoBancos[8])
+                            break
+                        case 10:
+                            codigoBanco(bancos[9], codigoBancos[9])
+                            break
+                        case 11:
+                            codigoBanco(bancos[10], codigoBancos[10])
+                            break
+                        case 12:
+                            codigoBanco(bancos[11], codigoBancos[11])
+                            break
+                        case 13:
+                            codigoBanco(bancos[12], codigoBancos[12])
+                            break
+                        case 14:
+                            codigoBanco(bancos[13], codigoBancos[13])
+                            break
+                        case 15:
+                            codigoBanco(bancos[14], codigoBancos[14])
+                            break
+                        case 16:
+                            codigoBanco(bancos[15], codigoBancos[15])
+                            break
+                    }
 
-                alert("Regresando al Menú Principal")
-                break
+                break    
            }
+           
+           alert("Regresando al Menú Principal")
 
+        }else if(transferencia == ingresos[1]){
+            alert("Regresando al Menú Principal")
         }else {
-            alert("Opción no válida")
+            alert("Opción no válida, regresando al Menú Principal")
         }
     }
 
-    if (menu1 == 1){
+    if (menuPrincipal == 1){
         alert("Usted seleccionó COMPRAR divisas")
             
             menuDivisas("Para ", "comprar", " usted necesita cambiar:")
 
             bancos()
 
-    }else if (menu1 == 2) {
+    }else if (menuPrincipal == 2) {
 
         alert("Usted seleccionó VENDER divisas")
         
@@ -178,12 +185,11 @@ while (acceso == ingresos[0]) {
             bancos()
 
     }else {  
-        alert("Opción no válida")
         break    
     }    
 }
-alert("Gracias por utilizar nuestros servicios")
+alert("Gracias por utilizar nuestros servicios \n" + "PROGRAMA FINALIZADO" )
 
-let otraOpcion = ingresos.push("Programa finalizado")
+let pusheandoMenuPrincipal = ingresos.push("para reiniciar F5 (Win), o Comando + R (Mac)")
 
 alert(ingresos[2])
