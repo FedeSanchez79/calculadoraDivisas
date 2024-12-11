@@ -1,4 +1,9 @@
 let acceso = prompt("$MART CLICK: \n" + "Desea realizar una operación de COMPRA/VENTA de divisas extranjeras con pesos Argentinos? SI/NO")
+
+if(acceso !== "no" && acceso !== "si"){
+    alert("Por favor ingrese SI o NO")
+}
+
 const ingresos = ["si", "no"]
 
 while (acceso == ingresos[0]) {
@@ -13,8 +18,10 @@ while (acceso == ingresos[0]) {
             do {
 
                 const nombreDivisas = ["dolares", "euros", "reales", "pesos chilenos", "pesos uruguayos"]
-    
-                  switch(menu2){
+
+                //MUCHOS CASE, VER SI CON OBJETO SE PUEDE REDUCIR
+
+                switch(menu2){
                     case 1:
                         alert(`Usted seleccionó operar con ` + nombreDivisas[0]) 
                         break            
@@ -35,38 +42,41 @@ while (acceso == ingresos[0]) {
                         return          
                     }
     
-                    let cantidad = parseFloat(prompt("Indique la cantidad que desea " + opcion + ": "))
-                    function calculadora(monto, cotizacion, moneda){
-                        alert (articulo + opcion + ` ${cantidad} ` + moneda +  mensaje + " " + monto*cotizacion + " pesos Argentinos")
-                    } 
+                let cantidad = parseFloat(prompt("Indique la cantidad que desea " + opcion + ": "))
 
-                    const cotizacion = [1100, 1030, 171, 101, 24]
+                function calculadoraDivisas(monto, cotizacion, moneda){
+                    alert (articulo + opcion + ` ${cantidad} ` + moneda +  mensaje + " " + monto*cotizacion + " pesos Argentinos")
+                } 
 
-                    switch(menu2){
-                        case 1:
-                            calculadora(cantidad, cotizacion[0], nombreDivisas[0]) 
-                            break            
-                        case 2:
-                            calculadora(cantidad, cotizacion[1], nombreDivisas[1]) 
-                            break
-                        case 3:
-                            calculadora(cantidad, cotizacion[2], nombreDivisas[2]) 
-                            break
-                        case 4:
-                            calculadora(cantidad, cotizacion[3], nombreDivisas[3]) 
-                            break
-                        case 5:
-                            calculadora(cantidad, cotizacion[4], nombreDivisas[4]) 
-                            break
-                        default:
-                            alert("Opción no válida")
-                            return            
-                        }
+                const cotizacion = [1100, 1030, 171, 101, 24]
+
+                //MUCHOS CASE, VER SI CON OBJETO SE PUEDE REDUCIR
+
+                switch(menu2){
+                    case 1:
+                        calculadoraDivisas(cantidad, cotizacion[0], nombreDivisas[0]) 
+                        break            
+                    case 2:
+                        calculadoraDivisas(cantidad, cotizacion[1], nombreDivisas[1]) 
+                        break
+                    case 3:
+                        calculadoraDivisas(cantidad, cotizacion[2], nombreDivisas[2]) 
+                        break
+                    case 4:
+                        calculadoraDivisas(cantidad, cotizacion[3], nombreDivisas[3]) 
+                        break
+                    case 5:
+                        calculadoraDivisas(cantidad, cotizacion[4], nombreDivisas[4]) 
+                        break
+                    default:
+                        alert("Opción no válida")
+                        return            
+                    }
     
             }while(menu2 == 0 && menu2 > 5)
-        }else 
-            alert("Opción no válida")  
-            return  
+
+        }else if(menu2 !== isNaN || menu2 == 0 || menu2 > 5)
+            alert("Opción no válida")   
     }
 
     function bancos(){
@@ -77,14 +87,17 @@ while (acceso == ingresos[0]) {
 
            let banco = parseInt(prompt("MENU BANCOS: \n" + "Por favor seleccione un número para indicar con que Banco desea operar: \n" + "1.- Banco de la Nación Argentina \n" + "2.- Banco de la Provincia de Buenos Aires \n" + "3.- Banco de la Ciudad de Buenos Aires \n" + "4.- Banco Galicia \n" + "5.- Banco BBVA \n" + "6.- Banco Hipotecario \n" + "7.- Banco del Chubut \n" + "8.- Banco Columbia \n" + "9.- Banco Entre Rios \n" + "10.- Banco Comafi \n" + "11.- ICBC Argentina \n" + "12.- Banco Macro \n" + "13.- Nuevo Banco Santa Fe \n" + "14.- Banco Patagonia \n" + "15.- Banco Santiago del Estero \n" + "16.- Banco Superville"))
            
-           while (banco >= 1 && banco <= 16){
+            while (banco >= 1 && banco <= 16){
 
                 const codigoBancos = ["00011", "00014", "00029", "00007", "00017", "00044", "00083", "00389", "00386", "00299", "00131", "00285", "00330", "00034", "00321", "00027"]
+
                 const bancos = ["banco nación", "banco provincia", "banco ciudad", "banco galicia", "banco bbva", "banco hipotecario", "banco chubut", "banco columbia", "banco entre rios", "banco comafi", "icbc argentina", "banco macro", "nuevo banco santa fe", "banco patagonia", "banco santiago del estero", "banco superville"]
 
                 function codigoBanco(nombre, codigo){
-                alert("Usted seleccionó transferir al " + nombre + "\n" + " Recuerde que su codigo bancario es " + codigo)
+                alert("Usted seleccionó transferir al " + nombre + "\n" + "Recuerde que su codigo bancario es " + codigo)
                 }
+
+                //MUCHOS CASE, VER SI CON OBJETO SE PUEDE REDUCIR
 
                 switch(banco){
                     case 1:
@@ -136,12 +149,14 @@ while (acceso == ingresos[0]) {
                         codigoBanco(bancos[15], codigoBancos[15])
                         break
                     default:
-                        alert ("Opción inválida")
+                        alert ("Opción no válida")
                         break
                 }
+
                 alert("Regresando al Menú Principal")
                 break
            }
+
         }else {
             alert("Opción no válida")
         }
@@ -163,9 +178,12 @@ while (acceso == ingresos[0]) {
             bancos()
 
     }else {  
-            break    
-        }    
-    }
-    alert("Gracias por utilizar nuestros servicios")
-    let otraOpcion = ingresos.push("programa finalizado")
-    alert(ingresos[2])
+        alert("Opción no válida")
+        break    
+    }    
+}
+alert("Gracias por utilizar nuestros servicios")
+
+let otraOpcion = ingresos.push("Programa finalizado")
+
+alert(ingresos[2])
